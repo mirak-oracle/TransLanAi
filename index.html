@@ -1,114 +1,149 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Sidebar Menu</title>
-  <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css'>
-<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap'><link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TransLanAi - Language Translation Tool</title>
 
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZY9S9E5VGC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZY9S9E5VGC');
+</script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh; /* Ensure the body fills the viewport height */
+            position: relative; /* Position relative for footer positioning */
+        }
+        .container {
+            padding-bottom: 100px; /* Add padding equal to the footer height */
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        .footer {
+            position: absolute; /* Position absolute for sticking to the bottom */
+            bottom: 0;
+            width: 100%;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 14px;
+            height: 50px; /* Set a fixed height */
+        }
+        .footer span {
+            animation: holographic 2s linear infinite alternate-reverse;
+        }
+        @keyframes holographic {
+            0% {
+                color: #00ff00;
+            }
+            50% {
+                color: #00f;
+            }
+            100% {
+                color: #ff00ff;
+            }
+        }
+    </style>
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<nav class="sidebar close">
-  <header>
-    <div class="image-text">
-      <span class="image">
-        <img src="https://i.postimg.cc/jqgkqhSb/cast-11.jpg" alt="image gallery">
-      </span>
-
-      <div class="text logo-text">
-        <span class="name">ICOM DIGITAL </span>
-        <span class="profession">Development</span>
-      </div>
+    <div class="container">
+        <h1>TransLanAi - Language Translation Tool</h1>
+        <textarea id="inputText" placeholder="Enter text to translate..." rows="4"></textarea>
+        <select id="sourceLanguage">
+            <option value="auto">Auto-Detect</option>
+            <option value="en">English</option>
+            <option value="fr">French</option>
+            <option value="es">Spanish</option>
+            <!-- Add more languages as needed -->
+        </select>
+        <select id="targetLanguage">
+            <option value="en">English</option>
+            <option value="fr">French</option>
+            <option value="es">Spanish</option>
+            <option value="de">German</option>
+            <option value="it">Italian</option>
+            <option value="pt">Portuguese</option>
+            <option value="ru">Russian</option>
+            <option value="zh-CN">Chinese (Simplified)</option>
+            <option value="ja">Japanese</option>
+            <option value="ko">Korean</option>
+            <option value="ar">Arabic</option>
+            <option value="hi">Hindi</option>
+            <option value="tr">Turkish</option>
+            <option value="nl">Dutch</option>
+            <option value="sv">Swedish</option>
+            <option value="pl">Polish</option>
+            <option value="th">Thai</option>
+            <option value="el">Greek</option>
+            <option value="cs">Czech</option>
+            <option value="da">Danish</option>
+            <option value="fi">Finnish</option>
+            <!-- Add more languages as needed -->
+        </select>
+        <button onclick="openGoogleTranslate()">Translate with Google</button>
+        <div class="result" id="translationResult"></div>
     </div>
 
-    <i class='bx bx-chevron-right toggle'></i>
-  </header>
-
-  <div class="menu-bar">
-    <div class="menu">
-
-      <li class="search-box">
-        <i class='bx bx-search icon'></i>
-        <input type="text" placeholder="Search...">
-      </li>
-
-      <ul class="menu-links">
-        <li class="nav-link">
-          <a href="#">
-            <i class='bx bx-home-alt icon'></i>
-            <span class="text nav-text">Dashboard</span>
-          </a>
-        </li>
-
-        <li class="nav-link">
-          <a href="#">
-            <i class='bx bx-bar-chart-alt-2 icon'></i>
-            <span class="text nav-text">Revenue</span>
-          </a>
-        </li>
-
-        <li class="nav-link">
-          <a href="#">
-            <i class='bx bx-bell icon'></i>
-            <span class="text nav-text">Notifications</span>
-          </a>
-        </li>
-
-        <li class="nav-link">
-          <a href="#">
-            <i class='bx bx-pie-chart-alt icon'></i>
-            <span class="text nav-text">Analytics</span>
-          </a>
-        </li>
-
-        <li class="nav-link">
-          <a href="#">
-            <i class='bx bx-heart icon'></i>
-            <span class="text nav-text">Likes</span>
-          </a>
-        </li>
-
-        <li class="nav-link">
-          <a href="#">
-            <i class='bx bx-wallet icon'></i>
-            <span class="text nav-text">Wallets</span>
-          </a>
-        </li>
-
-      </ul>
+    <div class="footer">
+        <span>Mirak Oracle part of Mirakle Group</span><br>
+        <span>Powered by Google</span>
     </div>
 
-    <div class="bottom-content">
-      <li class="">
-        <a href="#">
-          <i class='bx bx-log-out icon'></i>
-          <span class="text nav-text">Logout</span>
-        </a>
-      </li>
-
-      <li class="mode">
-        <div class="sun-moon">
-          <i class='bx bx-moon icon moon'></i>
-          <i class='bx bx-sun icon sun'></i>
-        </div>
-        <span class="mode-text text">Dark mode</span>
-
-        <div class="toggle-switch">
-          <span class="switch"></span>
-        </div>
-      </li>
-
-    </div>
-  </div>
-
-</nav>
-
-<section class="home">
-  <div class="text">Dashboard Sidebar</div>
-</section>
-<!-- partial -->
-  <script  src="./script.js"></script>
-
+    <script>
+        function openGoogleTranslate() {
+            const inputText = encodeURIComponent(document.getElementById('inputText').value);
+            const sourceLanguage = document.getElementById('sourceLanguage').value;
+            const targetLanguage = document.getElementById('targetLanguage').value;
+            const url = `https://translate.google.com/?sl=${sourceLanguage}&tl=${targetLanguage}&op=translate&text=${inputText}`;
+            window.open(url, '_blank');
+        }
+    </script>
 </body>
 </html>
