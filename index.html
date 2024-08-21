@@ -14,82 +14,124 @@
 
   gtag('config', 'G-ZY9S9E5VGC');
 </script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh; /* Ensure the body fills the viewport height */
-            position: relative; /* Position relative for footer positioning */
-        }
-        .container {
-            padding-bottom: 100px; /* Add padding equal to the footer height */
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        textarea {
-            width: 100%;
-            height: 100px;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            resize: vertical;
-        }
-        select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-right: 10px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .result {
-            margin-top: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px;
-        }
-        .footer {
-            position: absolute; /* Position absolute for sticking to the bottom */
-            bottom: 0;
-            width: 100%;
-            background-color: #000;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            font-size: 14px;
-            height: 50px; /* Set a fixed height */
-        }
-        .footer span {
-            animation: holographic 2s linear infinite alternate-reverse;
-        }
-        @keyframes holographic {
-            0% {
-                color: #00ff00;
-            }
-            50% {
-                color: #00f;
-            }
-            100% {
-                color: #ff00ff;
-            }
-        }
+<style>
+    body {
+    font-family: 'Inter', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    position: relative;
+    background-color: #f9fafb;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-bottom: 100px;
+}
+
+h1 {
+    text-align: center;
+    color: #1f2937;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 120px;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-sizing: border-box;
+    resize: vertical;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+textarea:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+    outline: none;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+select:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+    outline: none;
+}
+
+button {
+    padding: 12px 24px;
+    background: linear-gradient(90deg, #4f46e5, #6366f1);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background 0.3s, transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background: linear-gradient(90deg, #4338ca, #4f46e5);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.result {
+    margin-top: 25px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #000000, #434343);
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    height: 60px;
+}
+
+.footer span {
+    font-weight: bold;
+    animation: holographic 3s linear infinite alternate-reverse;
+}
+
+@keyframes holographic {
+    0% {
+        color: #00ffcc;
+    }
+    50% {
+        color: #0099ff;
+    }
+    100% {
+        color: #ff00cc;
+    }
+}
+
     </style>
 </head>
 <body>
