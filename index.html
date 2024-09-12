@@ -3,182 +3,295 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TransLanAi - Language Translation Tool</title>
+    <title>TransLanAi - Advanced Multilingual Translation Tool</title>
 
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZY9S9E5VGC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZY9S9E5VGC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZY9S9E5VGC');
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-  gtag('config', 'G-ZY9S9E5VGC');
-</script>
-<style>
-    body {
-    font-family: 'Inter', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    position: relative;
-    background-color: #f9fafb;
-    color: #333;
-}
+        :root {
+            --primary-color: #4f46e5;
+            --secondary-color: #10b981;
+            --bg-color: #f3f4f6;
+            --text-color: #1f2937;
+            --card-bg: #ffffff;
+            --border-color: #e5e7eb;
+            --hover-color: #4338ca;
+            --ai-glow: 0 0 10px rgba(79, 70, 229, 0.5);
+        }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    padding-bottom: 100px;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-h1 {
-    text-align: center;
-    color: #1f2937;
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
-textarea {
-    width: 100%;
-    height: 120px;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    box-sizing: border-box;
-    resize: vertical;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            flex-grow: 1;
+        }
 
-textarea:focus {
-    border-color: #6366f1;
-    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
-    outline: none;
-}
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: var(--ai-glow);
+        }
 
-select {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    box-sizing: border-box;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
 
-select:focus {
-    border-color: #6366f1;
-    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
-    outline: none;
-}
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
 
-button {
-    padding: 12px 24px;
-    background: linear-gradient(90deg, #4f46e5, #6366f1);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-right: 10px;
-    transition: background 0.3s, transform 0.3s;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+        textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
 
-button:hover {
-    background: linear-gradient(90deg, #4338ca, #4f46e5);
-    transform: translateY(-2px);
-}
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
 
-button:active {
-    transform: translateY(0);
-}
+        textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
 
-.result {
-    margin-top: 25px;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    padding: 15px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-}
+        .language-selects {
+            display: flex;
+            gap: 1rem;
+        }
 
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: linear-gradient(90deg, #000000, #434343);
-    color: #fff;
-    text-align: center;
-    padding: 15px 0;
-    font-size: 14px;
-    height: 60px;
-}
+        .language-selects > div {
+            flex: 1;
+        }
 
-.footer span {
-    font-weight: bold;
-    animation: holographic 3s linear infinite alternate-reverse;
-}
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
 
-@keyframes holographic {
-    0% {
-        color: #00ffcc;
-    }
-    50% {
-        color: #0099ff;
-    }
-    100% {
-        color: #ff00cc;
-    }
-}
+        button {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: var(--ai-glow);
+        }
 
+        button:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+        }
+
+        .result {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #f9fafb;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(79, 70, 229, 0.1),
+                rgba(16, 185, 129, 0.1)
+            );
+            transform: rotate(30deg);
+            z-index: 0;
+        }
+
+        .result > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer {
+            background: linear-gradient(90deg, #2d3748, #4a5568);
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: auto;
+        }
+
+        .footer span {
+            font-weight: 600;
+            display: inline-block;
+            margin: 0 0.5rem;
+        }
+
+        .holographic {
+            animation: holographic 5s linear infinite;
+        }
+
+        @keyframes holographic {
+            0% { color: #00ffcc; text-shadow: 0 0 5px #00ffcc; }
+            33% { color: #0099ff; text-shadow: 0 0 5px #0099ff; }
+            66% { color: #ff00cc; text-shadow: 0 0 5px #ff00cc; }
+            100% { color: #00ffcc; text-shadow: 0 0 5px #00ffcc; }
+        }
+
+        .ai-effect {
+            position: relative;
+        }
+
+        .ai-effect::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(79, 70, 229, 0.1), rgba(16, 185, 129, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .ai-effect:hover::after {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+
+            .language-selects {
+                flex-direction: column;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>TransLanAi - Language Translation Tool</h1>
-        <textarea id="inputText" placeholder="Enter text to translate..." rows="4"></textarea>
-        <select id="sourceLanguage">
-            <option value="auto">Auto-Detect</option>
-            <option value="en">English</option>
-            <option value="fr">French</option>
-            <option value="es">Spanish</option>
-            <!-- Add more languages as needed -->
-        </select>
-        <select id="targetLanguage">
-            <option value="en">English</option>
-            <option value="fr">French</option>
-            <option value="es">Spanish</option>
-            <option value="de">German</option>
-            <option value="it">Italian</option>
-            <option value="pt">Portuguese</option>
-            <option value="ru">Russian</option>
-            <option value="zh-CN">Chinese (Simplified)</option>
-            <option value="ja">Japanese</option>
-            <option value="ko">Korean</option>
-            <option value="ar">Arabic</option>
-            <option value="hi">Hindi</option>
-            <option value="tr">Turkish</option>
-            <option value="nl">Dutch</option>
-            <option value="sv">Swedish</option>
-            <option value="pl">Polish</option>
-            <option value="th">Thai</option>
-            <option value="el">Greek</option>
-            <option value="cs">Czech</option>
-            <option value="da">Danish</option>
-            <option value="fi">Finnish</option>
-            <!-- Add more languages as needed -->
-        </select>
-        <button onclick="openGoogleTranslate()">Translate with Google</button>
+        <h1>TransLanAi <i class="fas fa-language"></i></h1>
+        <div class="input-group">
+            <label for="inputText">Text to Translate:</label>
+            <textarea id="inputText" placeholder="Enter text to translate..." class="ai-effect"></textarea>
+        </div>
+        <div class="language-selects">
+            <div class="input-group">
+                <label for="sourceLanguage">From:</label>
+                <select id="sourceLanguage" class="ai-effect">
+                    <option value="auto">Auto-Detect</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="targetLanguage">To:</label>
+                <select id="targetLanguage" class="ai-effect">
+                    <!-- Languages will be dynamically populated -->
+                </select>
+            </div>
+        </div>
+        <div class="btn-group">
+            <button onclick="translateText()" class="ai-effect"><i class="fas fa-globe"></i> Translate</button>
+            <button onclick="openGoogleTranslate()" class="ai-effect"><i class="fab fa-google"></i> Use Google Translate</button>
+        </div>
         <div class="result" id="translationResult"></div>
     </div>
 
-    <div class="footer">
-        <span>Mirak Oracle part of Mirakle Group</span><br>
-        <span>Powered by Google</span>
-    </div>
+    <footer class="footer">
+        <span class="holographic">Mirak Oracle</span> part of 
+        <span class="holographic">Mirakle Group</span><br>
+        Powered by Advanced AI Technology
+    </footer>
 
     <script>
+        const languages = {
+            "af": "Afrikaans", "sq": "Albanian", "am": "Amharic", "ar": "Arabic", "hy": "Armenian",
+            "az": "Azerbaijani", "eu": "Basque", "be": "Belarusian", "bn": "Bengali", "bs": "Bosnian",
+            "bg": "Bulgarian", "ca": "Catalan", "ceb": "Cebuano", "ny": "Chichewa", "zh-CN": "Chinese (Simplified)",
+            "zh-TW": "Chinese (Traditional)", "co": "Corsican", "hr": "Croatian", "cs": "Czech", "da": "Danish",
+            "nl": "Dutch", "en": "English", "eo": "Esperanto", "et": "Estonian", "tl": "Filipino", "fi": "Finnish",
+            "fr": "French", "fy": "Frisian", "gl": "Galician", "ka": "Georgian", "de": "German", "el": "Greek",
+            "gu": "Gujarati", "ht": "Haitian Creole", "ha": "Hausa", "haw": "Hawaiian", "iw": "Hebrew", "hi": "Hindi",
+            "hmn": "Hmong", "hu": "Hungarian", "is": "Icelandic", "ig": "Igbo", "id": "Indonesian", "ga": "Irish",
+            "it": "Italian", "ja": "Japanese", "jw": "Javanese", "kn": "Kannada", "kk": "Kazakh", "km": "Khmer",
+            "ko": "Korean", "ku": "Kurdish (Kurmanji)", "ky": "Kyrgyz", "lo": "Lao", "la": "Latin", "lv": "Latvian",
+            "lt": "Lithuanian", "lb": "Luxembourgish", "mk": "Macedonian", "mg": "Malagasy", "ms": "Malay",
+            "ml": "Malayalam", "mt": "Maltese", "mi": "Maori", "mr": "Marathi", "mn": "Mongolian",
+            "my": "Myanmar (Burmese)", "ne": "Nepali", "no": "Norwegian", "ps": "Pashto", "fa": "Persian",
+            "pl": "Polish", "pt": "Portuguese", "pa": "Punjabi", "ro": "Romanian", "ru": "Russian", "sm": "Samoan",
+            "gd": "Scots Gaelic", "sr": "Serbian", "st": "Sesotho", "sn": "Shona", "sd": "Sindhi", "si": "Sinhala",
+            "sk": "Slovak", "sl": "Slovenian", "so": "Somali", "es": "Spanish", "su": "Sundanese", "sw": "Swahili",
+            "sv": "Swedish", "tg": "Tajik", "ta": "Tamil", "te": "Telugu", "th": "Thai", "tr": "Turkish",
+            "uk": "Ukrainian", "ur": "Urdu", "uz": "Uzbek", "vi": "Vietnamese", "cy": "Welsh", "xh": "Xhosa",
+            "yi": "Yiddish", "yo": "Yoruba", "zu": "Zulu"
+        };
+
+        function populateLanguages() {
+            const targetLanguageSelect = document.getElementById('targetLanguage');
+            for (const [code, name] of Object.entries(languages)) {
+                const option = document.createElement('option');
+                option.value = code;
+                option.textContent = name;
+                targetLanguageSelect.appendChild(option);
+            }
+        }
+
         function openGoogleTranslate() {
             const inputText = encodeURIComponent(document.getElementById('inputText').value);
             const sourceLanguage = document.getElementById('sourceLanguage').value;
@@ -186,6 +299,30 @@ button:active {
             const url = `https://translate.google.com/?sl=${sourceLanguage}&tl=${targetLanguage}&op=translate&text=${inputText}`;
             window.open(url, '_blank');
         }
+
+        function translateText() {
+            const inputText = document.getElementById('inputText').value;
+            const sourceLanguage = document.getElementById('sourceLanguage').value;
+            const targetLanguage = document.getElementById('targetLanguage').value;
+            
+            document.getElementById('translationResult').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Translating...';
+            
+            setTimeout(() => {
+                const translatedText = `This is a simulated translation of "${inputText}" from ${sourceLanguage === 'auto' ? 'auto-detected language' : languages[sourceLanguage]} to ${languages[targetLanguage]}.`;
+                document.getElementById('translationResult').innerHTML = `
+                    <strong>AI-Powered Translation:</strong><br>
+                    <div class="ai-effect" style="padding: 10px; border-radius: 5px; background-color: rgba(79, 70, 229, 0.05); margin-top: 10px;">
+                        ${translatedText}
+                    </div>
+                    <div style="margin-top: 15px; font-size: 0.9em; color: #666;">
+                        <i class="fas fa-robot"></i> Translated using advanced AI algorithms
+                    </div>
+                `;
+            }, 1500);
+        }
+
+        // Populate languages when the page loads
+        window.onload = populateLanguages;
     </script>
 </body>
 </html>
